@@ -49,7 +49,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
   width: 80%;
   height: 80%;
 `;
@@ -97,6 +97,27 @@ export const Input = styled.input`
   padding-left: 10px;
 `;
 
+export const Select = styled.select`
+  width: 104%;
+  height: 33px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: #000000;
+  padding-left: 10px;
+`;
+
+export const Option = styled.option`
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: #000000;
+  padding-left: 10px;
+`;
+
 export const Label = styled.label`
   margin-bottom: 5px;
   ${(props) => {
@@ -119,8 +140,8 @@ export const ButtonContainer = styled.div`
 
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: left;
-  justify-content: left;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   /* border: 1px solid #fff; */
 `;
@@ -139,5 +160,32 @@ export const Button = styled.button`
   cursor: pointer;
   &:hover {
     background-color: ${styles.tertiaryColor};
+  }
+`;
+
+export const Error = styled.span`
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+`;
+
+export const AccountInfo = styled.h1`
+  color: ${styles.fontColor};
+  font-size: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+`;
+
+export const Link = styled.a`
+  color: ${styles.secondaryColor};
+  font-size: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    color: ${styles.tertiaryColor};
   }
 `;
