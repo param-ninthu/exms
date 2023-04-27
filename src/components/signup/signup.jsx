@@ -46,8 +46,8 @@ const Signup = () => {
     reset,
     formState: { errors },
   } = useForm({
-    mode: "onBlur", // validate on blur
-    criteriaMode: "all", // show all errors at once
+    // mode: "onBlur", // validate on blur
+    // criteriaMode: "all", // show all errors at once
   });
 
   const onSubmit = (data) => {

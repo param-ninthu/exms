@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   ContentContainer,
@@ -10,10 +10,37 @@ import {
   ButtonContainer,
   Button,
   Info,
+  PasswordField,
+  IconButton,
+  Error,
 } from "./signinElements";
 import GoogleIcon from "@mui/icons-material/Google";
+import axios from "axios";
+import ReactDOM from "react-dom";
+import { useForm } from "react-hook-form";
+// import VisibilityIcon from "@mui/icons-material/Visibility";
+// import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const Signin = () => {
+  // const [password, setPassword] = useState("");
+  // const [passwordShown, setPasswordShown] = useState(false);
+  // const togglePassword = () => {
+  //   setPasswordShown(!passwordShown);
+  // };
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm({});
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+    reset();
+  }; // your form submit function which will invoke after successful validation
+
   return (
     <Container $mode="main">
       <Container $mode="body">
@@ -21,14 +48,43 @@ const Signin = () => {
           <h1>Sign In</h1>
         </ContentContainer>
         <FormContainer>
-          <Form>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <InputContainer $mode="wrapper">
               <Label>Email</Label>
-              <Input />{" "}
+              <Input
+                {...register("email", {
+                  required: true,
+                })}
+              />{" "}
+              {errors?.email?.type === "required" && (
+                <Error>Enter the email address</Error>
+              )}
             </InputContainer>
             <InputContainer $mode="wrapper">
               <Label>Password</Label>
-              <Input type="password" />{" "}
+              <Input
+                type="password"
+                {...register("password", {
+                  required: true,
+                })}
+              />{" "}
+              {errors?.password?.type === "required" && (
+                <Error>Enter the Password</Error>
+              )}
+              {/* <PasswordField>
+                <Input
+                  type={passwordShown ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />{" "}
+                <IconButton onClick={togglePassword}>
+                  {passwordShown ? (
+                    <VisibilityIcon sx={{ color: "#000" }} />
+                  ) : (
+                    <VisibilityOffIcon sx={{ color: "#000" }} />
+                  )}
+                </IconButton>
+              </PasswordField> */}
             </InputContainer>
             <ButtonContainer>
               <Button $mode="casual" type="submit">

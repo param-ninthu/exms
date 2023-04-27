@@ -75,7 +75,7 @@ export const Input = styled.input`
   border-radius: 5px;
   border: none;
   outline: none;
-  font-size: 20px;
+  font-size: 16px;
   color: #000000;
   padding-left: 10px;
 `;
@@ -99,7 +99,7 @@ export const Label = styled.label`
 
 export const ButtonContainer = styled.div`
   display: flex;
-
+  margin-top: 15px;
   flex-direction: column;
   align-items: left;
   justify-content: left;
@@ -118,14 +118,15 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
+
   cursor: pointer;
 
   ${(props) => {
     switch (props.$mode) {
       case "casual":
         return css`
+          margin-top: 20px;
+          margin-bottom: 10px;
           background-color: ${styles.secondaryColor};
           &:hover {
             background-color: ${styles.tertiaryColor};
@@ -166,4 +167,31 @@ export const Link = styled.a`
   &:hover {
     color: ${styles.tertiaryColor};
   }
+`;
+
+export const PasswordField = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+`;
+
+export const IconButton = styled.button`
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
+  margin-left: 10px;
+  background-color: transparent;
 `;
