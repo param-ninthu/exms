@@ -7,6 +7,8 @@ const styles = {
   fontColorSecondary: "#8039df",
   activeColor: "#191736",
   borderColor: "#d6d6d6",
+  dashboardPrimaryColor: "#191A19",
+  dashboardSecondaryColor: "#07090a",
 };
 
 export { styles };

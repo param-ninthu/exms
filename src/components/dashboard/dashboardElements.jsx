@@ -23,17 +23,17 @@ export const Container = styled.div`
         return css`
           flex-direction: column;
           width: 100%;
-          background-color: ${styles.accentColor};
+          background-color: ${styles.dashboardPrimaryColor};
         `;
       case "top":
         return css`
           width: 100%;
-          background-color: ${styles.fontColor};
+          background-color: ${styles.dashboardSecondaryColor};
         `;
       case "body":
         return css`
           width: 100%;
-          background-color: ${styles.fontColor};
+          background-color: ${styles.dashboardSecondaryColor};
         `;
     }
   }}
@@ -44,7 +44,7 @@ export const SidnavContainer = styled.div`
   display: gird;
   grid-template-rows: 10% 50% 40%;
   width: 100%;
-  background-color: ${styles.accentColor};
+  background-color: ${styles.dashboardPrimaryColor};
 `;
 
 export const LogoContainer = styled.div`
@@ -72,7 +72,8 @@ export const ListItem = styled.li`
   align-items: center;
   width: 100%;
   height: 40px;
-  background-color: ${styles.accentColor};
+  background-color: ${styles.dashboardPrimaryColor};
+
   color: ${styles.fontColor};
   font-size: 1rem;
   font-weight: 600;
