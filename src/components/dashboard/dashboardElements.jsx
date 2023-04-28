@@ -93,7 +93,7 @@ export const TopbarContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
-  background-color: ${styles.accentColor};
+  /* background-color: ${styles.accentColor}; */
   padding-top: 3px;
   padding-bottom: 3px;
 `;

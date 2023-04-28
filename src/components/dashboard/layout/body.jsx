@@ -1,7 +1,12 @@
 import React from "react";
+import MainScreen from "../screens/mainScreen";
 
 const Body = () => {
-  return <div>Body</div>;
+  return (
+    <>
+      <MainScreen />
+    </>
+  );
 };
 
 export default Body;
