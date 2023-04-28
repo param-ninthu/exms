@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   ExpenseInfoContainer,
@@ -12,16 +12,34 @@ import {
   CardButton,
 } from "./screenElements";
 
+import AddExpencesForm from "../popup/AddExpencesForm";
+import AddIncomeForm from "../popup/AddIncomeForm";
+
 const MainScreen = () => {
+  const [activeExForm, setActiveExForm] = useState(false);
+  const [activeInForm, setActiveInForm] = useState(false);
+
+  const toggleEx = () => {
+    console.log("toggleEx");
+    setActiveExForm(!activeExForm);
+  };
+
+  const toggleIn = () => {
+    console.log("toggleIn");
+    setActiveInForm(!activeInForm);
+  };
+
   return (
     <Container $mode="main">
+      {activeExForm ? <AddExpencesForm toggle={toggleEx} /> : null}
+      {activeInForm ? <AddIncomeForm toggle={toggleIn} /> : null}
       <Container $mode="secondary">
         <Container $mode="report">
           <IncomeInfoContainer>
             <CardContainer>
               <CardContainerTopbar>
                 <CardTitle>Current Balance</CardTitle>
-                <CardButton>+</CardButton>
+                <CardButton onClick={toggleIn}>+</CardButton>
               </CardContainerTopbar>
               <CardContainerBody>Hello</CardContainerBody>
             </CardContainer>
@@ -44,7 +62,7 @@ const MainScreen = () => {
           <CardContainer>
             <CardContainerTopbar>
               <CardTitle>Expense details</CardTitle>
-              <CardButton>+</CardButton>
+              <CardButton onClick={toggleEx}>+</CardButton>
             </CardContainerTopbar>
             <CardContainerBody>Hello</CardContainerBody>
           </CardContainer>
