@@ -88,8 +88,8 @@ export const ExpenseInfoContainer = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 20% 80%;
   width: 100%;
   height: 100%;
   background-color: ${styles.dashboardPrimaryColor};
@@ -111,8 +111,49 @@ export const ChartContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-
   width: 98%;
   height: 100%;
   background-color: ${styles.dashboardPrimaryColor};
+`;
+
+export const CardContainerTopbar = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+`;
+
+export const CardContainerBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+  background-color: ${styles.dashboardPrimaryColor};
+`;
+
+export const CardTitle = styled.h1`
+  font-size: 20px;
+  font-weight: 500;
+  color: ${styles.tertiaryColor};
+  margin-left: 10px;
+`;
+
+export const CardButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: ${styles.fontColorSecondary};
+  color: ${styles.dashboardPrimaryColor};
+  font-size: 1.5rem;
 `;

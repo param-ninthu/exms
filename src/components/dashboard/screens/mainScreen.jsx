@@ -6,6 +6,10 @@ import {
   IncomeInfoContainer,
   DisplayExpenseContainer,
   ChartContainer,
+  CardContainerTopbar,
+  CardContainerBody,
+  CardTitle,
+  CardButton,
 } from "./screenElements";
 
 const MainScreen = () => {
@@ -14,10 +18,21 @@ const MainScreen = () => {
       <Container $mode="secondary">
         <Container $mode="report">
           <IncomeInfoContainer>
-            <CardContainer>Income</CardContainer>
+            <CardContainer>
+              <CardContainerTopbar>
+                <CardTitle>Current Balance</CardTitle>
+                <CardButton>+</CardButton>
+              </CardContainerTopbar>
+              <CardContainerBody>Hello</CardContainerBody>
+            </CardContainer>
           </IncomeInfoContainer>
           <ExpenseInfoContainer>
-            <CardContainer>Expense</CardContainer>
+            <CardContainer>
+              <CardContainerTopbar>
+                <CardTitle>Total Expenses</CardTitle>
+              </CardContainerTopbar>
+              <CardContainerBody>Hello</CardContainerBody>
+            </CardContainer>
           </ExpenseInfoContainer>
         </Container>
         <Container $mode="chart">
@@ -25,7 +40,15 @@ const MainScreen = () => {
         </Container>
       </Container>
       <Container $mode="expenses">
-        <DisplayExpenseContainer>Expenses List</DisplayExpenseContainer>
+        <DisplayExpenseContainer>
+          <CardContainer>
+            <CardContainerTopbar>
+              <CardTitle>Expense details</CardTitle>
+              <CardButton>+</CardButton>
+            </CardContainerTopbar>
+            <CardContainerBody>Hello</CardContainerBody>
+          </CardContainer>
+        </DisplayExpenseContainer>
       </Container>
     </Container>
   );
