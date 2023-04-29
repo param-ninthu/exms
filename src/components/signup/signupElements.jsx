@@ -92,7 +92,7 @@ export const Input = styled.input`
   border-radius: 5px;
   border: none;
   outline: none;
-  font-size: 20px;
+  font-size: 17px;
   color: #000000;
   padding-left: 10px;
 `;
@@ -103,7 +103,7 @@ export const Select = styled.select`
   border-radius: 5px;
   border: none;
   outline: none;
-  font-size: 20px;
+  font-size: 17px;
   color: #000000;
   padding-left: 10px;
 `;
