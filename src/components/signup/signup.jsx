@@ -19,10 +19,13 @@ import {
   Link,
 } from "./signupElements";
 import creditcard from "./../../assets/images/creditcard.gif";
+import { useSelector, useDispatch } from "react-redux";
+
+import { addUser } from "../../features/Users";
 
 const Signup = () => {
   const [countries, setCountries] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -51,6 +54,7 @@ const Signup = () => {
   });
 
   const onSubmit = (data) => {
+    dispatch(addUser(data));
     alert(JSON.stringify(data));
     reset();
   }; // your form submit function which will invoke after successful validation
