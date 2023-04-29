@@ -4,11 +4,20 @@ import Home from "./components/home/home";
 import Signup from "./components/signup/signup";
 import Signin from "./components/signin/signin";
 import Dashboard from "./components/dashboard/dashboard";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Profile from "./components/profile/profile";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <Dashboard />
+      <Router>
+        <Routes>
+          <Route path="/" exact element={<Home />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/signin" element={<Signin />}></Route>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+        </Routes>
+      </Router>
     </>
   );
 }

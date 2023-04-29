@@ -18,13 +18,17 @@ import {
   AccountInfo,
   Link,
 } from "./signupElements";
+import { useNavigate } from "react-router-dom";
 import creditcard from "./../../assets/images/creditcard.gif";
 import { useSelector, useDispatch } from "react-redux";
 
 import { addUser } from "../../features/Users";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [countries, setCountries] = useState([]);
+
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchCountries = async () => {
@@ -56,6 +60,7 @@ const Signup = () => {
   const onSubmit = (data) => {
     dispatch(addUser(data));
     alert(JSON.stringify(data));
+    navigate("/profile");
     reset();
   }; // your form submit function which will invoke after successful validation
 
