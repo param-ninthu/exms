@@ -10,11 +10,13 @@ export const usersSlice = createSlice({
       state.value.push(action.payload);
     },
     removeUser: (state, action) => {
-      state.value = state.value.filter((user) => user.id !== action.payload);
+      state.value = state.value.filter(
+        (user) => user.email !== action.payload.email
+      );
     },
     updateUser: (state, action) => {
       const index = state.value.findIndex(
-        (user) => user.id === action.payload.id
+        (user) => user.email === action.payload.email
       );
       state.value[index] = action.payload;
     },

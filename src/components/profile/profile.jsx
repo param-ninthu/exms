@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   Container,
-  ContentContainer,
   FormContainer,
   Form,
   InputContainer,
@@ -12,8 +11,6 @@ import {
   Error,
   Select,
   Option,
-  AccountInfo,
-  Link,
 } from "./profileElements";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -24,11 +21,6 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const [countries, setCountries] = useState([]);
-  const onSubmit = (data) => {
-    // dispatch(addUser(data));
-    alert(JSON.stringify(data));
-    reset();
-  }; // your form submit function which will invoke after successful validation
 
   const {
     register,
@@ -56,6 +48,12 @@ const Profile = () => {
     fetchCountries();
   }, []);
   const user = useSelector((state) => state.users.value);
+  const [userData, setUserData] = useState({ user });
+
+  const onSubmit = (data) => {
+    dispatch(updateUser(data));
+    alert(JSON.stringify(data));
+  }; // your form submit function which will invoke after successful validation
 
   return (
     <>
@@ -73,7 +71,7 @@ const Profile = () => {
                         maxLength: 20,
                         pattern: /^[A-Za-z]+$/i,
                       })}
-                      value={user.firstName}
+                      defaultValue={user.firstName}
                     />{" "}
                     {errors?.firstName?.type === "required" && (
                       <Error>This field is required</Error>
@@ -88,7 +86,7 @@ const Profile = () => {
                   <InputContainer $mode="wrapper">
                     <Label>Last Name</Label>
                     <Input
-                      value={user.lastName}
+                      defaultValue={user.lastName}
                       {...register("lastName", {
                         required: true,
                         maxLength: 20,
@@ -110,7 +108,7 @@ const Profile = () => {
                   <InputContainer $mode="wrapper">
                     <Label>Age</Label>
                     <Input
-                      value={user.age}
+                      defaultValue={user.age}
                       {...register("age", {
                         max: 99,
                         required: true,
@@ -127,7 +125,7 @@ const Profile = () => {
                   <InputContainer $mode="wrapper">
                     <Label>Date of Birth</Label>
                     <Input
-                      value={user.dob}
+                      defaultValue={user.dob}
                       type="date"
                       {...register("dob", { required: true })}
                     />
@@ -140,7 +138,7 @@ const Profile = () => {
                   <InputContainer $mode="wrapper">
                     <Label>Email</Label>
                     <Input
-                      value={user.email}
+                      defaultValue={user.email}
                       type="email"
                       {...register("email", {
                         required: true,
@@ -159,7 +157,7 @@ const Profile = () => {
                   <InputContainer $mode="wrapper">
                     <Label>Address Line 1</Label>
                     <Input
-                      value={user.addressline1}
+                      defaultValue={user.addressline1}
                       {...register("addressline1", { required: true })}
                     />
                     {errors?.addressline1?.type === "required" && (
@@ -169,7 +167,7 @@ const Profile = () => {
                   <InputContainer $mode="wrapper">
                     <Label>Address Line 2</Label>
                     <Input
-                      value={user.addressline2}
+                      defaultValue={user.addressline2}
                       {...register("addressline2", { required: true })}
                     />
                     {errors?.addressline2?.type === "required" && (
@@ -181,7 +179,7 @@ const Profile = () => {
                   <InputContainer $mode="wrapper">
                     <Label>City</Label>
                     <Input
-                      value={user.city}
+                      defaultValue={user.city}
                       {...register("city", { required: true })}
                     />
                     {errors?.city?.type === "required" && (
@@ -191,11 +189,11 @@ const Profile = () => {
                   <InputContainer $mode="wrapper">
                     <Label>Country</Label>
                     <Select
-                      value={user.country}
+                      defaultValue={user.country}
                       {...register("country", { required: true })}
                     >
-                      <Option value="" disabled selected>
-                        -- Select Country --
+                      <Option key={user.country} value={user.country} selected>
+                        {user.country}
                       </Option>
                       {countries.map((country) => (
                         <Option key={country.name} value={country.name}>
@@ -206,7 +204,6 @@ const Profile = () => {
                     {errors.country && <Error>This field is required</Error>}
                   </InputContainer>
                 </InputContainer>
-
                 <ButtonContainer>
                   <Button>Save Changes</Button>
                 </ButtonContainer>
