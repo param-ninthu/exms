@@ -16,9 +16,12 @@ import {
 } from "./popupElements";
 import { useForm } from "react-hook-form";
 import CloseIcon from "@mui/icons-material/Close";
+import { useSelector, useDispatch } from "react-redux";
+import { addExpense } from "../../../features/Expense";
 
-console.log("AddExpencesForm.jsx");
 const AddExpencesForm = ({ toggle }) => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -28,7 +31,9 @@ const AddExpencesForm = ({ toggle }) => {
   } = useForm({});
 
   const onSubmit = (data) => {
+    dispatch(addExpense(data));
     alert(JSON.stringify(data));
+    toggle();
     reset();
   }; // your form submit function which will invoke after successful validation
 

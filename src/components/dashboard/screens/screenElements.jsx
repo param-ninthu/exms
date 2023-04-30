@@ -157,3 +157,15 @@ export const CardButton = styled.button`
   color: ${styles.dashboardPrimaryColor};
   font-size: 1.5rem;
 `;
+
+export const ExpenseCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95%;
+  height: 50px;
+  border-radius: 8px;
+  margin-top: 10px;
+  background-color: ${styles.dashboardPrimaryColor};
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+`;

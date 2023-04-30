@@ -11,7 +11,8 @@ import {
   CardTitle,
   CardButton,
 } from "./screenElements";
-
+import { useSelector, useDispatch } from "react-redux";
+import { updateExpense } from "../../../features/Expense";
 import AddExpencesForm from "../popup/AddExpencesForm";
 import AddIncomeForm from "../popup/AddIncomeForm";
 
@@ -28,6 +29,8 @@ const MainScreen = () => {
     console.log("toggleIn");
     setActiveInForm(!activeInForm);
   };
+
+  const expense = useSelector((state) => state.expenses.value);
 
   return (
     <Container $mode="main">
@@ -64,7 +67,18 @@ const MainScreen = () => {
               <CardTitle>Expense details</CardTitle>
               <CardButton onClick={toggleEx}>+</CardButton>
             </CardContainerTopbar>
-            <CardContainerBody>Hello</CardContainerBody>
+            <CardContainerBody>
+              {expense.length === 0 ? <p>No expenses</p> : null}
+
+              {expense.map((item) => (
+                <div>
+                  <p>{item.exname}</p>
+                  <p>{item.date}</p>
+                  <p>{item.amount}</p>
+                  <p>{item.notes}</p>
+                </div>
+              ))}
+            </CardContainerBody>
           </CardContainer>
         </DisplayExpenseContainer>
       </Container>
