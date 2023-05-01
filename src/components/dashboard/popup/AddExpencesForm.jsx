@@ -46,6 +46,7 @@ const AddExpencesForm = ({ toggle }) => {
       </TopContainer>
       <FormContainer>
         <Form onSubmit={handleSubmit(onSubmit)}>
+          <Input {...register("email", { required: true })} hidden />
           <InputContainer $mode="wrapper">
             <Label>Expense Name</Label>
             <Input

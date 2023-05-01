@@ -60,7 +60,7 @@ const Signup = () => {
   const onSubmit = (data) => {
     dispatch(addUser(data));
     alert(JSON.stringify(data));
-    navigate("/dashboard");
+    navigate("/signin");
     reset();
   }; // your form submit function which will invoke after successful validation
 

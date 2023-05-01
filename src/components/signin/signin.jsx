@@ -18,10 +18,16 @@ import GoogleIcon from "@mui/icons-material/Google";
 import axios from "axios";
 import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { findUser } from "../../features/Users";
 // import VisibilityIcon from "@mui/icons-material/Visibility";
 // import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const Signin = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   // const [password, setPassword] = useState("");
   // const [passwordShown, setPasswordShown] = useState(false);
   // const togglePassword = () => {
@@ -37,7 +43,16 @@ const Signin = () => {
   } = useForm({});
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    alert(JSON.stringify(data.email));
+    const result = dispatch(
+      findUser({ email: data.email, password: data.password })
+    );
+    console.log(result);
+    if (result) {
+      navigate("/dashboard");
+    } else {
+      alert("Invalid Credentials");
+    }
     reset();
   }; // your form submit function which will invoke after successful validation
 

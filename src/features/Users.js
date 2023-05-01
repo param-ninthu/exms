@@ -20,8 +20,24 @@ export const usersSlice = createSlice({
       );
       state.value[index] = action.payload;
     },
+    findUser: (state, action) => {
+      // const { email, password } = action.payload;
+      const user = state.value.some(
+        (user) =>
+          user.email === action.payload.email &&
+          user.password === action.payload.password
+      );
+      if (
+        user.email === action.payload.email &&
+        user.password === action.payload.password
+      ) {
+        return user;
+      } else {
+        return false;
+      }
+    },
   },
 });
 
 export default usersSlice.reducer;
-export const { addUser, removeUser, updateUser } = usersSlice.actions;
+export const { addUser, removeUser, updateUser, findUser } = usersSlice.actions;
