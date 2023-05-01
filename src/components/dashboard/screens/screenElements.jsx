@@ -127,7 +127,6 @@ export const CardContainerTopbar = styled.div`
 export const CardContainerBody = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   border-radius: 8px;
   height: 100%;
@@ -159,13 +158,50 @@ export const CardButton = styled.button`
 `;
 
 export const ExpenseCard = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% 40% 40%;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 95%;
-  height: 50px;
+  height: 80px;
   border-radius: 8px;
   margin-top: 10px;
   background-color: ${styles.dashboardPrimaryColor};
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+`;
+
+export const SplashTitle = styled.h1`
+  font-size: 20px;
+  font-weight: 500;
+  color: ${styles.fontColor};
+`;
+
+export const ExpenseImage = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+`;
+
+export const ExpenseTitle = styled.h1`
+  font-size: 16px;
+  font-weight: 500;
+  color: ${styles.fontColor};
+  margin-left: 10px;
+`;
+
+export const ExpenseSubTitle = styled.h2`
+  font-size: 14px;
+  font-weight: 400;
+  color: ${styles.fontColorSecondary};
+  margin-top: 10px;
+  margin-left: 10px;
+`;
+
+export const ExpenseTitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
 `;

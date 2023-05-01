@@ -21,6 +21,7 @@ import { addExpense } from "../../../features/Expense";
 
 const AddExpencesForm = ({ toggle }) => {
   const dispatch = useDispatch();
+  const users = JSON.parse(localStorage.getItem("user"));
 
   const {
     register,
@@ -46,7 +47,12 @@ const AddExpencesForm = ({ toggle }) => {
       </TopContainer>
       <FormContainer>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Input {...register("email", { required: true })} hidden />
+          <Input
+            value={users.email}
+            {...register("email", { required: true })}
+            hidden
+            readOnly
+          />
           <InputContainer $mode="wrapper">
             <Label>Expense Name</Label>
             <Input

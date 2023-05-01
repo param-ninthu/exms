@@ -10,11 +10,23 @@ import {
   CardContainerBody,
   CardTitle,
   CardButton,
+  SplashTitle,
+  ExpenseCard,
+  ExpenseImage,
+  ExpenseTitleContainer,
+  ExpenseTitle,
+  ExpenseSubTitle,
 } from "./screenElements";
 import { useSelector, useDispatch } from "react-redux";
 import { updateExpense } from "../../../features/Expense";
 import AddExpencesForm from "../popup/AddExpencesForm";
 import AddIncomeForm from "../popup/AddIncomeForm";
+
+import bills from "./../../../assets/icons/bills.png";
+import food from "./../../../assets/icons/food.png";
+import others from "./../../../assets/icons/others.png";
+import rent from "./../../../assets/icons/rent.png";
+import transport from "./../../../assets/icons/transport.png";
 
 const MainScreen = () => {
   const [activeExForm, setActiveExForm] = useState(false);
@@ -28,6 +40,28 @@ const MainScreen = () => {
   const toggleIn = () => {
     console.log("toggleIn");
     setActiveInForm(!activeInForm);
+  };
+
+  const getIcon = (category) => {
+    switch (category) {
+      case "bills":
+        return bills;
+        break;
+      case "food":
+        return food;
+        break;
+      case "others":
+        return others;
+        break;
+      case "rent":
+        return rent;
+        break;
+      case "transport":
+        return transport;
+        break;
+      default:
+        return others;
+    }
   };
 
   const expense = useSelector((state) => state.expenses.value);
@@ -68,15 +102,19 @@ const MainScreen = () => {
               <CardButton onClick={toggleEx}>+</CardButton>
             </CardContainerTopbar>
             <CardContainerBody>
-              {expense.length === 0 ? <p>No expenses</p> : null}
+              {expense.length === 0 ? (
+                <SplashTitle>No expenses</SplashTitle>
+              ) : null}
 
               {expense.map((item) => (
-                <div>
-                  <p>{item.exname}</p>
-                  <p>{item.date}</p>
-                  <p>{item.amount}</p>
-                  <p>{item.notes}</p>
-                </div>
+                <ExpenseCard>
+                  <ExpenseImage src={getIcon(item.category)} />
+                  <ExpenseTitleContainer>
+                    <ExpenseTitle>{item.exname}</ExpenseTitle>
+                    <ExpenseSubTitle>{item.date}</ExpenseSubTitle>
+                  </ExpenseTitleContainer>
+                  <ExpenseTitle>Rs {item.amount} </ExpenseTitle>
+                </ExpenseCard>
               ))}
             </CardContainerBody>
           </CardContainer>
