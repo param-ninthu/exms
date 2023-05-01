@@ -31,6 +31,8 @@ import transport from "./../../../assets/icons/transport.png";
 const MainScreen = () => {
   const [activeExForm, setActiveExForm] = useState(false);
   const [activeInForm, setActiveInForm] = useState(false);
+  var totalIncome = 0;
+  var totalExpense = 0;
 
   const toggleEx = () => {
     console.log("toggleEx");
@@ -56,15 +58,28 @@ const MainScreen = () => {
       case "rent":
         return rent;
         break;
-      case "transport":
+      case "travel":
         return transport;
         break;
       default:
         return others;
     }
   };
-
   const expense = useSelector((state) => state.expenses.value);
+  const income = useSelector((state) => state.income.value);
+  const refresh = () => {
+    {
+      income.map((item) => (totalIncome = totalIncome + parseInt(item.amount)));
+    }
+    {
+      expense.map(
+        (item) => (totalExpense = totalExpense + parseInt(item.amount))
+      );
+    }
+    totalIncome = totalIncome - totalExpense;
+  };
+
+  refresh();
 
   return (
     <Container $mode="main">
@@ -78,7 +93,13 @@ const MainScreen = () => {
                 <CardTitle>Current Balance</CardTitle>
                 <CardButton onClick={toggleIn}>+</CardButton>
               </CardContainerTopbar>
-              <CardContainerBody>Hello</CardContainerBody>
+              <CardContainerBody>
+                {" "}
+                {income.length === 0 ? (
+                  <SplashTitle>Add Income</SplashTitle>
+                ) : null}
+                <SplashTitle>Rs {totalIncome}</SplashTitle>
+              </CardContainerBody>
             </CardContainer>
           </IncomeInfoContainer>
           <ExpenseInfoContainer>

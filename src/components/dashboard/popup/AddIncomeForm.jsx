@@ -14,8 +14,13 @@ import {
 } from "./popupElements";
 import { useForm } from "react-hook-form";
 import CloseIcon from "@mui/icons-material/Close";
+import { useSelector, useDispatch } from "react-redux";
+
+import { addIncome } from "../../../features/Income";
 
 const AddIncomeForm = ({ toggle }) => {
+  const dispatch = useDispatch();
+  const users = JSON.parse(localStorage.getItem("user"));
   const {
     register,
     handleSubmit,
@@ -25,7 +30,9 @@ const AddIncomeForm = ({ toggle }) => {
   } = useForm({});
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
+    dispatch(addIncome(data));
+    toggle();
     reset();
   };
   return (
@@ -37,6 +44,12 @@ const AddIncomeForm = ({ toggle }) => {
       </TopContainer>
       <FormContainer>
         <Form onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            value={users.email}
+            {...register("email", { required: true })}
+            hidden
+            readOnly
+          />
           <InputContainer $mode="wrapper">
             <Label>Source of Income</Label>
             <Input

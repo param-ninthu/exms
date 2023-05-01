@@ -33,7 +33,7 @@ const AddExpencesForm = ({ toggle }) => {
 
   const onSubmit = (data) => {
     dispatch(addExpense(data));
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
     toggle();
     reset();
   }; // your form submit function which will invoke after successful validation
