@@ -132,6 +132,7 @@ export const CardContainerBody = styled.div`
   height: 100%;
   width: 100%;
   background-color: ${styles.dashboardPrimaryColor};
+  overflow-y: auto;
 `;
 
 export const CardTitle = styled.h1`

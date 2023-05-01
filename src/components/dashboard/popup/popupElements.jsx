@@ -19,6 +19,19 @@ export const Container = styled.div`
   transition: all 0.3s ease-in-out;
   opacity: 0;
   pointer-events: none; */
+  ${(props) => {
+    switch (props.$mode) {
+      case "exview":
+        return css`
+          display: grid;
+          grid-template-columns: 20% 60% 20%;
+          max-width: 70%;
+          max-height: 20%;
+          top: 35%;
+        `;
+    }
+  }}
+
   ${(props) =>
     props.active &&
     css`
@@ -183,3 +196,79 @@ export const Button = styled.button`
     }
   }}
 `;
+
+export const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const Image = styled.img`
+  width: 80px;
+  height: 80px;
+`;
+
+export const ContentContainer = styled.div`
+  display: grid;
+  grid-template-rows: 20% 20% 60%;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const ContentTitle = styled.h1`
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 20px;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+`;
+
+export const IconContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+`;
+
+export const SubContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  justify-content: space-around;
+`;
+
+// export const Container = styled.div`
+//   position: fixed;
+//   top: 5%;
+//   left: 35%;
+//   z-index: 1000;
+//   width: 30%;
+//   height: 85%;
+//   background-color: #fff;
+//   border-radius: 5px;
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+//   padding: 20px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   align-items: center;
+//   /* transform: translate(-50%, -50%);
+//   transition: all 0.3s ease-in-out;
+//   opacity: 0;
+//   pointer-events: none; */
+//   ${(props) =>
+//     props.active &&
+//     css`
+//       opacity: 1;
+//       pointer-events: all;
+//     `}
+// `;

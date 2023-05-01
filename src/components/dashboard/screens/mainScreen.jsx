@@ -21,6 +21,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateExpense } from "../../../features/Expense";
 import AddExpencesForm from "../popup/AddExpencesForm";
 import AddIncomeForm from "../popup/AddIncomeForm";
+import ExpencesView from "../popup/ExpencesView";
 
 import bills from "./../../../assets/icons/bills.png";
 import food from "./../../../assets/icons/food.png";
@@ -31,17 +32,20 @@ import transport from "./../../../assets/icons/transport.png";
 const MainScreen = () => {
   const [activeExForm, setActiveExForm] = useState(false);
   const [activeInForm, setActiveInForm] = useState(false);
+  const [activeExView, setActiveExView] = useState(false);
   var totalIncome = 0;
   var totalExpense = 0;
 
   const toggleEx = () => {
-    console.log("toggleEx");
     setActiveExForm(!activeExForm);
   };
 
   const toggleIn = () => {
-    console.log("toggleIn");
     setActiveInForm(!activeInForm);
+  };
+
+  const toggleView = () => {
+    setActiveExView(!activeExView);
   };
 
   const getIcon = (category) => {
@@ -85,6 +89,8 @@ const MainScreen = () => {
     <Container $mode="main">
       {activeExForm ? <AddExpencesForm toggle={toggleEx} /> : null}
       {activeInForm ? <AddIncomeForm toggle={toggleIn} /> : null}
+      {activeExView ? <ExpencesView toggle={toggleView} /> : null}
+
       <Container $mode="secondary">
         <Container $mode="report">
           <IncomeInfoContainer>
@@ -128,13 +134,14 @@ const MainScreen = () => {
               ) : null}
 
               {expense.map((item) => (
-                <ExpenseCard>
+                <ExpenseCard onClick={toggleView}>
                   <ExpenseImage src={getIcon(item.category)} />
                   <ExpenseTitleContainer>
                     <ExpenseTitle>{item.exname}</ExpenseTitle>
                     <ExpenseSubTitle>{item.date}</ExpenseSubTitle>
                   </ExpenseTitleContainer>
                   <ExpenseTitle>Rs {item.amount} </ExpenseTitle>
+                  {localStorage.setItem("expense", JSON.stringify(item.exname))}
                 </ExpenseCard>
               ))}
             </CardContainerBody>
