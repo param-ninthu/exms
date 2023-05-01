@@ -21,6 +21,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { findUser } from "../../features/Users";
+import { logUser } from "../../features/Login";
 // import VisibilityIcon from "@mui/icons-material/Visibility";
 // import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
@@ -44,15 +45,18 @@ const Signin = () => {
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data.email));
-    const result = dispatch(
-      findUser({ email: data.email, password: data.password })
-    );
-    console.log(result);
-    if (result) {
-      navigate("/dashboard");
-    } else {
-      alert("Invalid Credentials");
+
+    if (localStorage.getItem("user") !== null) {
+      const users = JSON.parse(localStorage.getItem("user"));
+      if (users.email === data.email && users.pass === data.password) {
+        dispatch(logUser(users));
+        navigate("/dashboard");
+      } else {
+        console.log(users.email);
+        alert("Invalid Credentials");
+      }
     }
+
     reset();
   }; // your form submit function which will invoke after successful validation
 

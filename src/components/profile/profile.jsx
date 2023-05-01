@@ -60,7 +60,7 @@ const Profile = () => {
       <Container $mode="main">
         <Container $mode="body">
           <FormContainer>
-            {user.map((user) => (
+            {user?.map((user) => (
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <InputContainer $mode="double">
                   <InputContainer $mode="wrapper">
