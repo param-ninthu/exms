@@ -55,6 +55,12 @@ export const Container = styled.div`
 
           /* background-color: brown; */
         `;
+      case "table":
+        return css`
+          display: flex;
+          flex-direction: column;
+          padding: 10px;
+        `;
     }
   }}
 `;
@@ -260,4 +266,79 @@ export const Button = styled.button`
   color: ${styles.fontColor};
   background-color: ${styles.fontColorSecondary};
   cursor: pointer;
+  ${(props) => {
+    switch (props.$mode) {
+      case "table":
+        return css`
+          width: 20%;
+        `;
+    }
+  }}
+`;
+
+//////////////////Styels for table////////////////////////////////////////////
+
+export const TableContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+  overflow-y: auto;
+`;
+
+export const Table = styled.table`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const THead = styled.thead``;
+
+export const TBody = styled.tbody``;
+
+export const TRow = styled.tr`
+  display: flex;
+  justify-content: left;
+  align-items: center;
+`;
+
+export const THeading = styled.th`
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: ${styles.fontColor};
+  width: 200px;
+  height: 40px;
+  background-color: ${styles.secondaryColor};
+  margin-right: 5px;
+  padding-left: 20px;
+`;
+
+export const TData = styled.td`
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  width: 200px;
+  height: 40px;
+  background-color: ${styles.tertiaryColor};
+  margin-right: 5px;
+  padding-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  height: 50px;
+  width: 100%;
 `;

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { styles } from "../../resources/styles";
+import { Link } from "react-router-dom";
 
 // dashboard styles
 export const Container = styled.div`
@@ -115,4 +116,28 @@ export const Profile = styled.img`
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+`;
+
+export const LinkR = styled(Link)`
+  display: flex;
+  column-gap: 20px;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: ${styles.dashboardPrimaryColor};
+  text-decoration: none;
+  color: ${styles.fontColor};
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  &:hover {
+    background-color: ${styles.fontColor};
+    color: ${styles.accentColor};
+    border-right: 2px solid ${styles.secondaryColor};
+    border-radius: 7px;
+  }
 `;

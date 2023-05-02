@@ -5,6 +5,7 @@ import {
   SidnavContainer,
   ListItem,
   LogoutContainer,
+  LinkR,
 } from "../dashboardElements";
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -21,8 +22,10 @@ const Sidebar = () => {
           Dashboard
         </ListItem>
         <ListItem>
-          {" "}
-          <AssessmentIcon /> Reports
+          <LinkR to="/reports">
+            {" "}
+            <AssessmentIcon /> Reports
+          </LinkR>
         </ListItem>
         <ListItem>
           {" "}

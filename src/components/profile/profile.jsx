@@ -25,7 +25,6 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const [countries, setCountries] = useState([]);
-  const url = localStorage.getItem("prof");
 
   const {
     register,
@@ -59,6 +58,27 @@ const Profile = () => {
     dispatch(updateUser(data));
     alert(JSON.stringify(data));
   }; // your form submit function which will invoke after successful validation
+
+  const profFile = document.getElementById("prof");
+
+  if (profFile) {
+    profFile.addEventListener("change", () => {
+      const fr = new FileReader();
+      fr.readAsDataURL(profFile.files[0]);
+
+      fr.addEventListener("load", () => {
+        const url = fr.result;
+        localStorage.setItem("prof", url);
+      });
+    });
+  }
+  const url = localStorage.getItem("prof");
+
+  const refresh = () => {
+    const url = localStorage.getItem("prof");
+  };
+
+  refresh();
 
   return (
     <>

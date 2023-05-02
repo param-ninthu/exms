@@ -228,17 +228,22 @@ export const UploadContainer = styled.div`
 `;
 
 export const ImageUploadContainer = styled.input`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  color: ${styles.secondaryColor};
-  border: 1px dashed ${styles.secondaryColor};
-  content: "Select Profile";
-  cursor: pointer;
+  ::before {
+    content: "Edit Image";
+    color: white;
+    display: flex;
+    background-color: transparent;
+    border: 1px dashed ${styles.secondaryColor};
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 10pt;
+  }
+
   ::-webkit-file-upload-button {
     visibility: hidden;
   }
