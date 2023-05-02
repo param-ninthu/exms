@@ -1,8 +1,14 @@
 import React from "react";
-import { ProfileContainer, TopbarContainer } from "../dashboardElements";
+import {
+  Profile,
+  ProfileContainer,
+  TopbarContainer,
+} from "../dashboardElements";
 import { useNavigate } from "react-router-dom";
 
 const TopBar = () => {
+  const url = localStorage.getItem("prof");
+
   const onNavigate = () => {
     navigate("/profile");
   };
@@ -10,7 +16,9 @@ const TopBar = () => {
 
   return (
     <TopbarContainer>
-      <ProfileContainer onClick={onNavigate}></ProfileContainer>{" "}
+      <ProfileContainer onClick={onNavigate}>
+        <Profile src={url} />
+      </ProfileContainer>{" "}
     </TopbarContainer>
   );
 };

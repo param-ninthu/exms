@@ -10,7 +10,6 @@ export const Container = styled.div`
         return css`
           width: 80%;
           display: grid;
-
           grid-template-columns: 30% 70%;
         `;
 
@@ -187,5 +186,35 @@ export const Link = styled.a`
   cursor: pointer;
   &:hover {
     color: ${styles.tertiaryColor};
+  }
+`;
+
+export const UploadContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 47%;
+  height: 100px;
+  background-color: transparent;
+  color: ${styles.primaryColor};
+  margin-top: 10px;
+`;
+
+export const ImageUploadContainer = styled.input`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: ${styles.secondaryColor};
+  border: 1px dashed ${styles.secondaryColor};
+  content: "Select Profile";
+  cursor: pointer;
+  -webkit-user-select: none;
+  ::-webkit-file-upload-button {
+    visibility: hidden;
   }
 `;

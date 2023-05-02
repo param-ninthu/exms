@@ -17,6 +17,8 @@ import {
   Option,
   AccountInfo,
   Link,
+  ImageUploadContainer,
+  UploadContainer,
 } from "./signupElements";
 import { useNavigate } from "react-router-dom";
 import creditcard from "./../../assets/images/creditcard.gif";
@@ -64,6 +66,20 @@ const Signup = () => {
     navigate("/signin");
     reset();
   }; // your form submit function which will invoke after successful validation
+
+  const profFile = document.getElementById("prof");
+
+  if (profFile) {
+    profFile.addEventListener("change", () => {
+      const fr = new FileReader();
+      fr.readAsDataURL(profFile.files[0]);
+
+      fr.addEventListener("load", () => {
+        const url = fr.result;
+        localStorage.setItem("prof", url);
+      });
+    });
+  }
 
   return (
     <Container $mode="main">
@@ -233,6 +249,10 @@ const Signup = () => {
                 )}
               </InputContainer>
             </InputContainer>
+            <UploadContainer>
+              <ImageUploadContainer id="prof" type="file" accept="image/*" />
+            </UploadContainer>
+
             <ButtonContainer>
               <Button>Submit</Button>
             </ButtonContainer>

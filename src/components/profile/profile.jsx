@@ -11,6 +11,10 @@ import {
   Error,
   Select,
   Option,
+  ProfileContainer,
+  ProfileImg,
+  UploadContainer,
+  ImageUploadContainer,
 } from "./profileElements";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -21,6 +25,7 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const [countries, setCountries] = useState([]);
+  const url = localStorage.getItem("prof");
 
   const {
     register,
@@ -59,6 +64,19 @@ const Profile = () => {
     <>
       <Container $mode="main">
         <Container $mode="body">
+          <Container $mode="wrapper">
+            <ProfileContainer>
+              <ProfileImg src={url} />
+            </ProfileContainer>
+            <UploadContainer>
+              <ImageUploadContainer
+                id="prof"
+                type="file"
+                accept="image/*"
+                placeholder="Edit img"
+              />
+            </UploadContainer>
+          </Container>{" "}
           <FormContainer>
             {user?.map((user) => (
               <Form onSubmit={handleSubmit(onSubmit)}>

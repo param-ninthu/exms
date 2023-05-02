@@ -8,7 +8,8 @@ export const Container = styled.div`
     switch (props.$mode) {
       case "body":
         return css`
-          display: flex;
+          display: grid;
+          grid-template-columns: 30% 70%;
           width: 50%;
         `;
 
@@ -20,6 +21,16 @@ export const Container = styled.div`
           justify-content: center;
           width: 100%;
           height: 100vh;
+        `;
+
+      case "wrapper":
+        return css`
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
         `;
     }
   }}
@@ -183,5 +194,52 @@ export const Link = styled.a`
   cursor: pointer;
   &:hover {
     color: ${styles.tertiaryColor};
+  }
+`;
+
+export const ProfileContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: ${styles.secondaryColor};
+  width: 200px;
+  height: 200px;
+  margin-right: 10px;
+`;
+
+export const ProfileImg = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+`;
+
+export const UploadContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  color: ${styles.primaryColor};
+  margin-top: 10px;
+`;
+
+export const ImageUploadContainer = styled.input`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: ${styles.secondaryColor};
+  border: 1px dashed ${styles.secondaryColor};
+  content: "Select Profile";
+  cursor: pointer;
+  ::-webkit-file-upload-button {
+    visibility: hidden;
   }
 `;

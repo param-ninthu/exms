@@ -109,3 +109,10 @@ export const ProfileContainer = styled.div`
   height: 45px;
   margin-right: 10px;
 `;
+
+export const Profile = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+`;
