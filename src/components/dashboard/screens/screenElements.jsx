@@ -172,6 +172,21 @@ export const ExpenseCard = styled.div`
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 `;
 
+export const ExpenseCardBottombar = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  width: 95%;
+`;
+
+export const ExpenseCardContainer = styled.div`
+  display: grid;
+  grid-template-rows: 80% 20%;
+  height: 120px;
+  width: 100%;
+`;
+
 export const SplashTitle = styled.h1`
   font-size: 20px;
   font-weight: 500;
@@ -205,4 +220,44 @@ export const ExpenseTitleContainer = styled.div`
   flex-direction: column;
   justify-content: left;
   align-items: left;
+`;
+
+export const Form = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  margin-bottom: 20px;
+`;
+
+export const Input = styled.input`
+  display: flex;
+  width: 50%;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 10px;
+  padding-left: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: ${styles.fontColor};
+  background-color: ${styles.dashboardPrimaryColor};
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+`;
+
+export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: ${styles.fontColor};
+  background-color: ${styles.fontColorSecondary};
+  cursor: pointer;
 `;

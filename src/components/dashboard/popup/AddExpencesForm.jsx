@@ -22,7 +22,9 @@ import { addExpense } from "../../../features/Expense";
 const AddExpencesForm = ({ toggle }) => {
   const dispatch = useDispatch();
   const users = JSON.parse(localStorage.getItem("user"));
+  const expense = useSelector((state) => state.expenses.value);
 
+  console.log(expense.length);
   const {
     register,
     handleSubmit,
@@ -47,6 +49,12 @@ const AddExpencesForm = ({ toggle }) => {
       </TopContainer>
       <FormContainer>
         <Form onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            value={expense.length + 1}
+            hidden
+            readOnly
+            {...register("id", { required: true })}
+          />
           <Input
             value={users.email}
             {...register("email", { required: true })}

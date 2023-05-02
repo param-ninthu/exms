@@ -15,10 +15,11 @@ export const expensesSlice = createSlice({
       );
     },
     updateExpense: (state, action) => {
-      const index = state.value.findIndex(
-        (expense) => expense.id === action.payload.id
-      );
-      state.value[index] = action.payload;
+      state.value.map((expense) => {
+        if (expense.id === action.payload.id) {
+          expense.amount = action.payload.amount;
+        }
+      });
     },
     archiveExpense: (state, action) => {
       const index = state.value.findIndex(

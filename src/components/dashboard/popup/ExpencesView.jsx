@@ -28,7 +28,7 @@ import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { updateExpense } from "../../../features/Expense";
 
-const ExpencesView = ({ toggle }) => {
+const ExpencesView = ({ toggle, item }) => {
   const exname = localStorage.getItem("expense");
 
   return (
@@ -39,7 +39,7 @@ const ExpencesView = ({ toggle }) => {
       <ContentContainer>
         <ContentTitle>Hello</ContentTitle>
         <InputContainer $mode="wrapper">
-          <Input type="text" defaultValue="Vanakkam" />
+          <Input type="text" defaultValue={item} />
         </InputContainer>
         <Content>Vankkam vanthanam makkale</Content>
       </ContentContainer>

@@ -16,9 +16,20 @@ import {
   ExpenseTitleContainer,
   ExpenseTitle,
   ExpenseSubTitle,
+  ExpenseCardContainer,
+  ExpenseCardBottombar,
+  Form,
+  Input,
+  Button,
 } from "./screenElements";
+import { useForm } from "react-hook-form";
+
 import { useSelector, useDispatch } from "react-redux";
-import { updateExpense } from "../../../features/Expense";
+import {
+  updateExpense,
+  removeExpense,
+  archiveExpense,
+} from "../../../features/Expense";
 import AddExpencesForm from "../popup/AddExpencesForm";
 import AddIncomeForm from "../popup/AddIncomeForm";
 import ExpencesView from "../popup/ExpencesView";
@@ -28,8 +39,24 @@ import food from "./../../../assets/icons/food.png";
 import others from "./../../../assets/icons/others.png";
 import rent from "./../../../assets/icons/rent.png";
 import transport from "./../../../assets/icons/transport.png";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import { green, red } from "@mui/material/colors";
 
 const MainScreen = () => {
+  const dispatch = useDispatch();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm({
+    // mode: "onBlur", // validate on blur
+    // criteriaMode: "all", // show all errors at once
+  });
   const [activeExForm, setActiveExForm] = useState(false);
   const [activeInForm, setActiveInForm] = useState(false);
   const [activeExView, setActiveExView] = useState(false);
@@ -71,6 +98,9 @@ const MainScreen = () => {
   };
   const expense = useSelector((state) => state.expenses.value);
   const income = useSelector((state) => state.income.value);
+
+  const [userExpense, setUserExpense] = useState();
+
   const refresh = () => {
     {
       income.map((item) => (totalIncome = totalIncome + parseInt(item.amount)));
@@ -84,12 +114,14 @@ const MainScreen = () => {
   };
 
   refresh();
+  // const onSubmit = (data) => {
+  //   dispatch(updateExpense(data));
+  // }; // your form submit function which will invoke after successful validation
 
   return (
     <Container $mode="main">
       {activeExForm ? <AddExpencesForm toggle={toggleEx} /> : null}
       {activeInForm ? <AddIncomeForm toggle={toggleIn} /> : null}
-      {activeExView ? <ExpencesView toggle={toggleView} /> : null}
 
       <Container $mode="secondary">
         <Container $mode="report">
@@ -134,15 +166,59 @@ const MainScreen = () => {
               ) : null}
 
               {expense.map((item) => (
-                <ExpenseCard onClick={toggleView}>
-                  <ExpenseImage src={getIcon(item.category)} />
-                  <ExpenseTitleContainer>
-                    <ExpenseTitle>{item.exname}</ExpenseTitle>
-                    <ExpenseSubTitle>{item.date}</ExpenseSubTitle>
-                  </ExpenseTitleContainer>
-                  <ExpenseTitle>Rs {item.amount} </ExpenseTitle>
-                  {localStorage.setItem("expense", JSON.stringify(item.exname))}
-                </ExpenseCard>
+                <>
+                  <>
+                    {/* {activeExView ? (
+                      <ExpencesView toggle={toggleView} item={item.amount} />
+                    ) : null} */}
+                    {/* onClick={toggleView} */}
+                  </>
+                  <ExpenseCardContainer>
+                    <ExpenseCard>
+                      <ExpenseImage src={getIcon(item.category)} />
+                      <ExpenseTitleContainer>
+                        <ExpenseTitle>{item.exname}</ExpenseTitle>
+                        <ExpenseSubTitle>{item.date}</ExpenseSubTitle>
+                      </ExpenseTitleContainer>
+                      <ExpenseTitle>Rs {item.amount} </ExpenseTitle>
+                    </ExpenseCard>
+                    <ExpenseCardBottombar>
+                      {/* <DriveFileRenameOutlineIcon /> */}
+                      <DeleteIcon
+                        sx={{ color: red[500] }}
+                        onClick={() => {
+                          dispatch(removeExpense({ id: item.id }));
+                        }}
+                      />
+                      <ArchiveIcon
+                        sx={{ color: green[500] }}
+                        onClick={() => {
+                          dispatch(archiveExpense({ id: item.id }));
+                        }}
+                      />
+                    </ExpenseCardBottombar>
+                  </ExpenseCardContainer>
+                  <Form>
+                    <Input
+                      defaultValue={item.amount}
+                      onChange={(e) => {
+                        setUserExpense(e.target.value);
+                      }}
+                    />
+                    <Button
+                      onClick={() => {
+                        dispatch(
+                          updateExpense({
+                            id: item.id,
+                            amount: userExpense,
+                          })
+                        );
+                      }}
+                    >
+                      Update
+                    </Button>
+                  </Form>
+                </>
               ))}
             </CardContainerBody>
           </CardContainer>
