@@ -145,7 +145,7 @@ const Signin = () => {
                   window.location.href = `https://accounts.google.com/o/oauth2/auth?redirect_uri=${encodeURIComponent(
                     "http://localhost:3000/dashboard"
                   )}&response_type=code&client_id=${encodeURIComponent(
-                    "183345601616-b2c5f1fefdj64m8slrqmsmo2j8q8qk1p.apps.googleusercontent.com"
+                    process.env.CLIENT_ID
                   )}&scope=${encodeURIComponent(
                     "https://www.googleapis.com/auth/userinfo.email"
                   )}&access_type=offline&approval_prompt=force`;
