@@ -6,17 +6,21 @@ import {
 } from "../dashboardElements";
 import { useNavigate } from "react-router-dom";
 
-const TopBar = () => {
+const TopBar = ({ onSelect }) => {
+  const handleSelect = (component) => {
+    onSelect(component);
+  };
   const url = localStorage.getItem("prof");
 
-  const onNavigate = () => {
-    navigate("/profile");
-  };
   const navigate = useNavigate();
 
   return (
     <TopbarContainer>
-      <ProfileContainer onClick={onNavigate}>
+      <ProfileContainer
+        onClick={() => {
+          handleSelect("profile");
+        }}
+      >
         <Profile src={url} />
       </ProfileContainer>{" "}
     </TopbarContainer>

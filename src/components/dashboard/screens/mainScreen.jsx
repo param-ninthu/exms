@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   ExpenseInfoContainer,
@@ -33,6 +33,7 @@ import {
 import AddExpencesForm from "../popup/AddExpencesForm";
 import AddIncomeForm from "../popup/AddIncomeForm";
 import ExpencesView from "../popup/ExpencesView";
+import Chart from "react-apexcharts";
 
 import bills from "./../../../assets/icons/bills.png";
 import food from "./../../../assets/icons/food.png";
@@ -96,8 +97,8 @@ const MainScreen = () => {
         return others;
     }
   };
-  const expense = useSelector((state) => state.expenses.value);
-  const income = useSelector((state) => state.income.value);
+  const expense = useSelector((state) => state.expenses.value) || [];
+  const income = useSelector((state) => state.income.value) || [];
 
   const [userExpense, setUserExpense] = useState();
 
@@ -117,6 +118,115 @@ const MainScreen = () => {
   // const onSubmit = (data) => {
   //   dispatch(updateExpense(data));
   // }; // your form submit function which will invoke after successful validation
+
+  const [series, setSeries] = useState([]);
+  const donutOptions = {
+    options: {},
+    series: [4400, 5500, 4100, 107, 10005],
+    lables: ["Food", "Rent", "Travells", "Bills", "Others"],
+  };
+
+  // useEffect(() => {
+  //   const newSeries = [];
+  //   series.map((s) => {
+  //     const data = s.data.map(() => {
+  //       return Math.floor(Math.random() * (180 - min + 1)) + min;
+  //     });
+  //     newSeries.push({ data, name: s.name });
+  //   });
+  //   setSeries(newSeries);
+  // }, []);
+
+  const chartOptions = {
+    series: [
+      {
+        name: "Expense",
+        data: [50000, 2000, 450, 885, 3465, 6123, 1000, 4000],
+      },
+      {
+        name: "Income",
+        data: [50000, 20000, 4500, 8815, 1000, 6000, 1000, 4000],
+      },
+    ],
+    options: {
+      colors: ["#008FFB", "#00E396", "#fb0b12", "#CED4DC"],
+      chart: {
+        background: "transparent",
+      },
+      dataLabels: {
+        enabled: true,
+        background: {
+          foreColor: "white",
+        },
+      },
+      stroke: {
+        curve: "smooth",
+      },
+      xaxis: {
+        categories: [
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ],
+        labels: {
+          style: {
+            colors: [
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+            ],
+          },
+        },
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: [
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+              "#fff",
+            ],
+          },
+        },
+      },
+      legend: {
+        position: "top",
+        labels: {
+          colors: ["#008FFB", "#00E396"],
+          useSeriesColors: false,
+        },
+      },
+      grid: {
+        show: true,
+      },
+      tooltip: {
+        fillSeriesColor: "true",
+        x: { show: true },
+      },
+    },
+  };
 
   return (
     <Container $mode="main">
@@ -145,12 +255,27 @@ const MainScreen = () => {
               <CardContainerTopbar>
                 <CardTitle>Total Expenses</CardTitle>
               </CardContainerTopbar>
-              <CardContainerBody>Hello</CardContainerBody>
+              <CardContainerBody>
+                {" "}
+                <Chart
+                  series={donutOptions.series}
+                  options={donutOptions.options}
+                  type="donut"
+                  width="100%"
+                />
+              </CardContainerBody>
             </CardContainer>
           </ExpenseInfoContainer>
         </Container>
         <Container $mode="chart">
-          <ChartContainer>Chart</ChartContainer>
+          <ChartContainer>
+            <Chart
+              options={chartOptions.options}
+              series={chartOptions.series}
+              type="area"
+              height="100%"
+            />
+          </ChartContainer>
         </Container>
       </Container>
       <Container $mode="expenses">
@@ -161,7 +286,7 @@ const MainScreen = () => {
               <CardButton onClick={toggleEx}>+</CardButton>
             </CardContainerTopbar>
             <CardContainerBody>
-              {expense.length === 0 ? (
+              {expense && expense.length === 0 ? (
                 <SplashTitle>No expenses</SplashTitle>
               ) : null}
 
