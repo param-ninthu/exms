@@ -9,6 +9,7 @@ import {
   Image,
   TitleContainer,
   Title,
+  LinkR,
 } from "./homeElements";
 
 import creditcard from "./../../assets/images/creditcard.gif";
@@ -17,10 +18,17 @@ const Home = () => {
   return (
     <Container $mode="main">
       <NavBar>
-        <Logo>xms</Logo>
+        <LinkR to="/">
+          <Logo>xms</Logo>
+        </LinkR>
         <NavButtons>
-          <Button $mode="signin">Sign In</Button>
-          <Button $mode="signup">Sign Up</Button>
+          <LinkR to="/signin">
+            <Button $mode="signin">Sign In</Button>
+          </LinkR>
+          <LinkR to="signup">
+            {" "}
+            <Button $mode="signup">Sign Up</Button>
+          </LinkR>
         </NavButtons>
       </NavBar>
       <Container $mode="body">

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { styles } from "../../resources/styles";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   color: ${styles.fontColor};
@@ -18,7 +19,6 @@ export const Container = styled.div`
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
           width: 100%;
           height: 100vh;
         `;
@@ -177,7 +177,8 @@ export const AccountInfo = styled.h1`
   text-align: center;
 `;
 
-export const Link = styled.a`
+export const LinkA = styled(Link)`
+  text-decoration: none;
   color: ${styles.secondaryColor};
   font-size: 15px;
   margin-bottom: 20px;

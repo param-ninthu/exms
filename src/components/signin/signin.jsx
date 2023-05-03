@@ -13,6 +13,8 @@ import {
   PasswordField,
   IconButton,
   Error,
+  AccountInfo,
+  LinkA,
 } from "./signinElements";
 import GoogleIcon from "@mui/icons-material/Google";
 import axios from "axios";
@@ -22,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { findUser } from "../../features/Users";
 import { logUser } from "../../features/Login";
+import { LinkR, Logo, NavBar } from "../home/homeElements";
 // import VisibilityIcon from "@mui/icons-material/Visibility";
 // import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
@@ -62,6 +65,11 @@ const Signin = () => {
 
   return (
     <Container $mode="main">
+      <NavBar>
+        <LinkR to="/">
+          <Logo>xms</Logo>
+        </LinkR>
+      </NavBar>
       <Container $mode="body">
         <ContentContainer>
           <h1>Sign In</h1>
@@ -105,11 +113,15 @@ const Signin = () => {
                 </IconButton>
               </PasswordField> */}
             </InputContainer>
+
             <ButtonContainer>
               <Button $mode="casual" type="submit">
                 Sign In
               </Button>
             </ButtonContainer>
+            <AccountInfo>
+              Not Registered yet ? <LinkA to="/signup"> Click here </LinkA>{" "}
+            </AccountInfo>
             <Info
               style={{
                 borderBottom: "1px solid #ccc",

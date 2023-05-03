@@ -16,7 +16,7 @@ import {
   Select,
   Option,
   AccountInfo,
-  Link,
+  LinkA,
   ImageUploadContainer,
   UploadContainer,
 } from "./signupElements";
@@ -25,6 +25,7 @@ import creditcard from "./../../assets/images/creditcard.gif";
 import { useSelector, useDispatch } from "react-redux";
 
 import { addUser } from "../../features/Users";
+import { LinkR, Logo, NavBar } from "../home/homeElements";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -83,6 +84,11 @@ const Signup = () => {
 
   return (
     <Container $mode="main">
+      <NavBar>
+        <LinkR to="/">
+          <Logo>xms</Logo>
+        </LinkR>
+      </NavBar>
       <Container $mode="body">
         <ContentContainer>
           <h1>Signup</h1>
@@ -257,7 +263,7 @@ const Signup = () => {
               <Button>Submit</Button>
             </ButtonContainer>
             <AccountInfo>
-              Already have an account ? <Link> Click here </Link>{" "}
+              Already have an account ? <LinkA to="/signin"> Click here </LinkA>{" "}
             </AccountInfo>
           </Form>
         </FormContainer>

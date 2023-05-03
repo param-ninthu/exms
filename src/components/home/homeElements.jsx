@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 import { styles } from "../../resources/styles";
+import { Link } from "react-router-dom";
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,8 +58,8 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60%;
-  height: 80%;
+  width: 100%;
+  height: 85%;
   margin: 10px;
   border-radius: 5px;
   color: ${styles.fontColor};
@@ -130,4 +132,19 @@ export const Title = styled.h1`
         `;
     }
   }}
+`;
+
+export const LinkR = styled(Link)`
+  display: flex;
+  column-gap: 20px;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: ${styles.dashboardPrimaryColor};
+  text-decoration: none;
+  color: ${styles.fontColor};
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
 `;

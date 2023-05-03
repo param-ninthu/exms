@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { styles } from "../../resources/styles";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   color: ${styles.fontColor};
@@ -10,7 +11,7 @@ export const Container = styled.div`
         return css`
           width: 80%;
           display: grid;
-
+          margin-top: 10%;
           grid-template-columns: 50% 30%;
         `;
 
@@ -19,7 +20,6 @@ export const Container = styled.div`
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
           width: 100%;
           height: 100vh;
         `;
@@ -157,18 +157,6 @@ export const Info = styled.h1`
   text-align: center;
 `;
 
-export const Link = styled.a`
-  color: ${styles.secondaryColor};
-  font-size: 15px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  text-align: center;
-  cursor: pointer;
-  &:hover {
-    color: ${styles.tertiaryColor};
-  }
-`;
-
 export const PasswordField = styled.div`
   display: flex;
   flex-direction: row;
@@ -194,4 +182,24 @@ export const IconButton = styled.button`
   cursor: pointer;
   margin-left: 10px;
   background-color: transparent;
+`;
+
+export const AccountInfo = styled.h1`
+  color: ${styles.fontColor};
+  font-size: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+`;
+export const LinkA = styled(Link)`
+  text-decoration: none;
+  color: ${styles.secondaryColor};
+  font-size: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    color: ${styles.tertiaryColor};
+  }
 `;
