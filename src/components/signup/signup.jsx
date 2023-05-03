@@ -62,7 +62,6 @@ const Signup = () => {
 
   const onSubmit = (data) => {
     dispatch(addUser(data));
-    alert(JSON.stringify(data));
     localStorage.setItem("user", JSON.stringify(data));
     navigate("/signin");
     reset();

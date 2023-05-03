@@ -48,8 +48,6 @@ const Signin = () => {
   } = useForm({});
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data.email));
-
     if (localStorage.getItem("user") !== null) {
       const users = JSON.parse(localStorage.getItem("user"));
       if (users.email === data.email && users.pass === data.password) {

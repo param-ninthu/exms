@@ -56,7 +56,6 @@ const Profile = () => {
 
   const onSubmit = (data) => {
     dispatch(updateUser(data));
-    alert(JSON.stringify(data));
   }; // your form submit function which will invoke after successful validation
 
   const profFile = document.getElementById("prof");

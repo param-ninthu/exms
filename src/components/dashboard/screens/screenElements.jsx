@@ -59,6 +59,8 @@ export const Container = styled.div`
         return css`
           display: flex;
           flex-direction: column;
+          justify-content: center;
+          align-items: center;
           padding: 10px;
         `;
     }
@@ -329,7 +331,6 @@ export const Button = styled.button`
 export const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
   height: 90%;
