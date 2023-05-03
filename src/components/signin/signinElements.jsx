@@ -101,7 +101,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   margin-top: 15px;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   justify-content: left;
   width: 100%;
   /* border: 1px solid #fff; */

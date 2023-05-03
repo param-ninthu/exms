@@ -35,10 +35,12 @@ const Sidebar = ({ onSelect }) => {
         </ListItem>
       </List>
       <List>
-        <ListItem onClick={() => handleSelect("logout")}>
-          <LogoutIcon />
-          Logout
-        </ListItem>
+        <LinkR to="/">
+          <ListItem>
+            <LogoutIcon />
+            Logout
+          </ListItem>
+        </LinkR>
       </List>
     </SidnavContainer>
   );
