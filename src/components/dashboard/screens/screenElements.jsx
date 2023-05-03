@@ -139,6 +139,15 @@ export const CardContainerBody = styled.div`
   width: 100%;
   background-color: ${styles.dashboardPrimaryColor};
   overflow-y: auto;
+
+  ${(props) => {
+    switch (props.$mode) {
+      case "income":
+        return css`
+          justify-content: center;
+        `;
+    }
+  }}
 `;
 
 export const CardTitle = styled.h1`
@@ -194,9 +203,40 @@ export const ExpenseCardContainer = styled.div`
 `;
 
 export const SplashTitle = styled.h1`
+  margin: 5px;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
   color: ${styles.fontColor};
+`;
+
+export const SplashCard = styled.div`
+  ${(props) => {
+    switch (props.$mode) {
+      case "null":
+        return css`
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 95%;
+          height: 80px;
+          border-radius: 8px;
+          margin-top: 10px;
+          background-color: ${styles.secondaryColor};
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+        `;
+      case "value":
+        return css`
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+          border-radius: 8px;
+          background: linear-gradient(17deg, #9c4fd4, #68a797);
+        `;
+    }
+  }}
 `;
 
 export const ExpenseImage = styled.img`
@@ -204,6 +244,14 @@ export const ExpenseImage = styled.img`
   height: 60px;
   border-radius: 8px;
   object-fit: cover;
+`;
+
+export const IncomeImage = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin: 5px;
 `;
 
 export const ExpenseTitle = styled.h1`

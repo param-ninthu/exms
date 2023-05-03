@@ -15,6 +15,7 @@ export const Container = styled.div`
           width: 80%;
           display: grid;
           grid-template-columns: 50% 50%;
+          margin-top: 5%;
         `;
 
       case "main":
@@ -129,6 +130,13 @@ export const Title = styled.h1`
       case "secondary":
         return css`
           color: ${styles.secondaryColor};
+        `;
+      case "subline":
+        return css`
+          margin-top: 20px;
+          color: ${styles.secondaryColor};
+          font-size: 20px;
+          font-weight: 100;
         `;
     }
   }}

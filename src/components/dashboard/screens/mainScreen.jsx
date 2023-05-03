@@ -21,6 +21,8 @@ import {
   Form,
   Input,
   Button,
+  SplashCard,
+  IncomeImage,
 } from "./screenElements";
 import { useForm } from "react-hook-form";
 
@@ -40,6 +42,7 @@ import food from "./../../../assets/icons/food.png";
 import others from "./../../../assets/icons/others.png";
 import rent from "./../../../assets/icons/rent.png";
 import transport from "./../../../assets/icons/transport.png";
+import cash from "./../../../assets/icons/cash.png";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
@@ -241,12 +244,18 @@ const MainScreen = () => {
                 <CardTitle>Current Balance</CardTitle>
                 <CardButton onClick={toggleIn}>+</CardButton>
               </CardContainerTopbar>
-              <CardContainerBody>
+              <CardContainerBody $mode="income">
                 {" "}
                 {income.length === 0 ? (
-                  <SplashTitle>Add Income</SplashTitle>
-                ) : null}
-                <SplashTitle>Rs {totalIncome}</SplashTitle>
+                  <SplashCard $mode="null">
+                    <SplashTitle>Add Income</SplashTitle>
+                  </SplashCard>
+                ) : (
+                  <SplashCard $mode="value">
+                    <SplashTitle>Rs {totalIncome}</SplashTitle>
+                    <IncomeImage src={cash} />
+                  </SplashCard>
+                )}
               </CardContainerBody>
             </CardContainer>
           </IncomeInfoContainer>
@@ -287,7 +296,9 @@ const MainScreen = () => {
             </CardContainerTopbar>
             <CardContainerBody>
               {expense && expense.length === 0 ? (
-                <SplashTitle>No expenses</SplashTitle>
+                <SplashCard $mode="null">
+                  <SplashTitle>Add Expenses</SplashTitle>
+                </SplashCard>
               ) : null}
 
               {expense.map((item) => (
